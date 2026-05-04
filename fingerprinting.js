@@ -1,6 +1,18 @@
-function collectFingerprint() {
+async function collectHtmlHeaderFingerprint() {
+    try {
+        const response = await fetch("http://localhost:3000/headers");
+        const data = await response.json();
+        return data.headers;
+    } catch (error) {
+        console.error("Error fetching server headers:", error);
+        return undefined;
+    }
+}
+
+function collectJsFingerprint() {
     return {
         userAgent: navigator.userAgent,
+
         language: navigator.language,
         languages: navigator.languages,
         platform: navigator.platform,
@@ -30,12 +42,19 @@ async function hashFingerprint(fp) {
 }
 
 document.getElementById("collectBtn").addEventListener("click", async () => {
-    const fp = collectFingerprint();
+    const htmlHeadersFingerprint = await collectHtmlHeaderFingerprint();
+    const jsFingerprint = collectJsFingerprint();
 
-    const hash = await hashFingerprint(fp);
+    const combinedFingerprint = {
+        htmlHeadersFingerprint,
+        jsFingerprint,
+    };
 
-    localStorage.setItem("fingerprint", JSON.stringify(fp));
+    const hash = await hashFingerprint(combinedFingerprint);
+
+    localStorage.setItem("fingerprint", JSON.stringify(combinedFingerprint));
 
     document.getElementById("hash").innerText = hash;
-    document.getElementById("fingerprint").innerText = JSON.stringify(fp, null, 2);
+    document.getElementById("htmlHeaderFingerprint").innerText = JSON.stringify(htmlHeadersFingerprint, null, 2);
+    document.getElementById("jsFingerprint").innerText = JSON.stringify(jsFingerprint, null, 2);
 });
