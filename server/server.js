@@ -4,6 +4,7 @@ const cors = require("cors");
 const port = 3000;
 
 app.use(cors());
+app.use(express.static('public'));
 
 app.get("/headers", (req, res) => {
     const headers = {
