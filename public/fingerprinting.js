@@ -1,9 +1,9 @@
-import { collectHtmlHeaderFingerprint } from "./methods/httpHeaderFingerprint.js";
-import { collectJsObjectFingerprint } from "./methods/jsObjectFingerprint.js";
-import { collectFontFingerprint } from "./methods/fontFingerprint.js";
-import { collectCanvasFingerprint } from "./methods/canvasFingerprint.js";
-import { collectWebGLFingerprint } from "./methods/webglFingerprint.js";
-import { collectAudioFingerprint } from "./methods/webAudioFingerprint.js";
+import { collectHtmlHeaderFingerprint } from "/methods/httpHeaderFingerprint.js";
+import { collectJsObjectFingerprint } from "/methods/jsObjectFingerprint.js";
+import { collectFontFingerprint } from "/methods/fontFingerprint.js";
+import { collectCanvasFingerprint } from "/methods/canvasFingerprint.js";
+import { collectWebGLFingerprint } from "/methods/webglFingerprint.js";
+import { collectAudioFingerprint } from "/methods/webAudioFingerprint.js";
 import { hashFingerprint } from "/hashFunction.js";
 
 document.getElementById("collectBtn").addEventListener("click", async () => {
