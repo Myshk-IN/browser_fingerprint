@@ -20,5 +20,10 @@ export async function collectCanvasFingerprint() {
 
     const dataURL = canvas.toDataURL();
 
-    return await hashFingerprint(new TextEncoder().encode(dataURL));
+    try {
+        return await hashFingerprint(new TextEncoder().encode(dataURL));
+    } catch (error) {
+        console.error("Failed to calculate hash:", error.message);
+        return null;
+    }
 }

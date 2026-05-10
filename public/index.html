@@ -3,24 +3,74 @@
   <head>
     <meta charset="UTF-8">
     <title>Browser Fingerprint Collection</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h2>Browser Fingerprint</h2>
+    <h1>Browser Fingerprint</h1>
 
     <button id="collectBtn">Collect Fingerprint</button>
 
-    <h3>Fingerprint ID:</h3>
+    <h2>Fingerprint hash</h2>
     <pre id="hash"></pre>
 
-    <h3>Current Fingerprint:</h3>
-    <h4>HTML header Fingerprint</h4>
-    <pre id="htmlHeaderFingerprint"></pre>
-    <h4>JavaScript Fingerprint</h4>
+    <hr>
+
+    <h2>Current Fingerprint:</h2>
+    <h5>HTTP header Fingerprint</h5>
+    <pre id="httpHeaderFingerprint"></pre>
+
+    <h3>JavaScript Fingerprint</h3>
+    <h5>JavaScript object fingerprint</h5>
     <pre id="jsFingerprint"></pre>
+    <h5>Detected fonts</h5>
     <pre id="fontFingerprint"></pre>
+    <h5>Canvas API fingerprint hash</h5>
     <pre id="canvasFingerprint"></pre>
+    <h5>WebGL API fingerprint</h5>
     <pre id="webglFingerprint"></pre>
+    <h5>Audio API fingerprint hash</h5>
     <pre id="audioFingerprint"></pre>
+
+    <h4>Is Chrome AdBlock installed?</h4>
+    <h5>Checking by URL</h5>
+    <pre id="isAdBlockDetectedByUrl"></pre>
+    <h5>Checking by CSS</h5>
+    <pre id="isAdBlockDetectedByCss"></pre>
+    <h5>Checking by time difference between ad-like and regular URL</h5>
+    <pre id="adUrlDuration"></pre>
+    <pre id="normalUrlDuration"></pre>
+
+    <h3>CSS Fingerprint</h3>
+    <h5>Engines detected by CSS property</h5>
+    <pre id="cssProperty"></pre>
+    <h5>CSS Detected fonts</h5>
+    <pre id="cssFontFingerprint"></pre>
+
+    <hr>
+
+    <h2>Fingerprint and attribute collection duration (in ms)</h2>
+    <h5>Overall duration:</h5>
+    <pre id="duration"></pre>
+    <h5>Duration of HTTP header fingerprint:</h5>
+    <pre id="httpHeaderDuration"></pre>
+    <h5>Duration of JavaScript object fingerprint:</h5>
+    <pre id="jsDuration"></pre>
+    <h5>Duration of font fingerprint:</h5>
+    <pre id="fontDuration"></pre>
+    <h5>Duration of Canvas API fingerprint:</h5>
+    <pre id="canvasDuration"></pre>
+    <h5>Duration of WebGL API fingerprint:</h5>
+    <pre id="webGLDuration"></pre>
+    <h5>Duration of Web Audio API fingerprint:</h5>
+    <pre id="audioDuration"></pre>
+    <h5>Duration of extension fingerprint:</h5>
+    <pre id="extensionDuration"></pre>
+    <h5>Duration of CSS fingerprint:</h5>
+    <pre id="cssDuration"></pre>
+
+    <!--For CSS font detection-->
+    <div id="ref" class="box ref"></div>
+    <div id="test" class="box test"></div>
 
     <script type="module" src="fingerprinting.js"></script>
   </body>

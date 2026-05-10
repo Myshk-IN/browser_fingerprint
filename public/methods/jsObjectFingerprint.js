@@ -2,11 +2,12 @@
 export function collectJsObjectFingerprint() {
     return {
         userAgent: navigator.userAgent,
-
         language: navigator.language,
         languages: navigator.languages,
-        platform: navigator.platform, // deprecated but shows
         hardwareConcurrency: navigator.hardwareConcurrency,
+        cookiesEnabled: navigator.cookieEnabled,
+        doNotTrack: navigator.doNotTrack, // deprecated but does not show
+        platform: navigator.platform, // deprecated but shows
 
         screen: {
             width: screen.width,
@@ -16,8 +17,5 @@ export function collectJsObjectFingerprint() {
         },
 
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-
-        cookiesEnabled: navigator.cookieEnabled,
-        doNotTrack: navigator.doNotTrack, // deprecated but does not show
     };
 }

@@ -10,8 +10,8 @@ app.get("/headers", (req, res) => {
     const headers = {
         userAgent: req.headers["user-agent"],
         accept: req.headers["accept"],
-        contentEncoding: req.headers["content-encoding"] || "none",
-        contentLanguage: req.headers["content-language"] || "none",
+        acceptEncoding: req.headers["accept-encoding"],
+        acceptLanguage: req.headers["accept-language"],
     };
 
     res.json({

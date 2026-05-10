@@ -1,4 +1,4 @@
-export function isFontInstalled(fontName) {
+function isFontInstalled(fontName) {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
 

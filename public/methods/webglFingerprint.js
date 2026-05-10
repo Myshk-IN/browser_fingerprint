@@ -62,9 +62,17 @@ export async function collectWebGLFingerprint() {
 
     const dataURL = canvas.toDataURL();
 
+    let imageHash;
+    try {
+        imageHash = await hashFingerprint(new TextEncoder().encode(dataURL));
+    } catch (error) {
+        console.error("Failed to calculate hash:", error.message);
+        imageHash = null;
+    }
+
     return  {
         vendor,
         renderer,
-        imageHash: await hashFingerprint(new TextEncoder().encode(dataURL))
+        imageHash
     };
 }

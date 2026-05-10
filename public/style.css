@@ -1,0 +1,14 @@
+.box {
+    height: 10px;
+    display: inline-block;
+}
+
+.ref {
+    font-family: sans-serif;
+    width: 20ch;
+}
+
+.test {
+    font-family: "Arial", sans-serif;
+    width: 20ch;
+}

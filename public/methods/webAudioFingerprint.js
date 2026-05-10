@@ -30,5 +30,10 @@ export async function collectAudioFingerprint() {
 
     const fingerprint = sum.toString();
 
-    return await hashFingerprint(new TextEncoder().encode(fingerprint));
+    try {
+        return await hashFingerprint(new TextEncoder().encode(fingerprint));
+    } catch (error) {
+        console.error("Failed to calculate hash:", error.message);
+        return null;
+    }
 }
