@@ -69,8 +69,6 @@ document.getElementById("collectBtn").addEventListener("click", async () => {
     const data = new TextEncoder().encode(JSON.stringify(combinedFingerprint, Object.keys(combinedFingerprint).sort()));
     const hash = await hashFingerprint(data);
 
-    localStorage.setItem("fingerprint", JSON.stringify(combinedFingerprint));
-
     const endTime = performance.now();
     // Duration of collecting a fingerprint and its attributes
     const duration = endTime - startTime;
@@ -82,6 +80,22 @@ document.getElementById("collectBtn").addEventListener("click", async () => {
     const audioDuration = audioEnd - audioStart;
     const extensionDuration = extensionFingerprintEnd - extensionStart;
     const cssDuration = cssEnd - cssStart;
+
+    const combinedDuration = {
+        duration,
+        httpHeaderDuration,
+        jsDuration,
+        fontDuration,
+        canvasDuration,
+        webGLDuration,
+        audioDuration,
+        extensionDuration,
+        cssDuration,
+    }
+
+    // save data to local storage
+    localStorage.setItem("fingerprint", JSON.stringify(combinedFingerprint));
+    localStorage.setItem("duration", JSON.stringify(combinedDuration));
 
     document.getElementById("duration").innerText = duration.toString();
     document.getElementById("httpHeaderDuration").innerText = httpHeaderDuration.toString();
