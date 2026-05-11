@@ -94,6 +94,7 @@ document.getElementById("collectBtn").addEventListener("click", async () => {
     }
 
     // save data to local storage
+    localStorage.setItem("hash", hash);
     localStorage.setItem("fingerprint", JSON.stringify(combinedFingerprint));
     localStorage.setItem("duration", JSON.stringify(combinedDuration));
 
